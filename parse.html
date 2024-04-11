@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container1{
+            display: flex;
+         
+            align-items: start;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px 20px;
+        }
+        .box{
+            width: 25%;
+        height: 350px;
+           background-color: palegreen; 
+           border-radius: 5px;
+           padding: 8px 5px;
+          
+        }
+        .box h3{
+            /* width: 70%; */
+            background-color: whitesmoke;
+            border-radius: 5px;
+            padding: 5px 5px;
+            margin: 35px 5px;
+        }
+        .btn{
+            background-color: yellow;
+            border-radius: 5px;
+            padding: 3px 10px;
+            font-size: large;
+            font-weight: 00;
+        }
+        .btn:hover{
+            cursor: pointer;
+            background-color: red;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div class="container1" id="container1">
+        
+    </div>
+
+    <script>
+        let data = [{
+            id:1,
+            name: "Mayank Patel ",
+work:"swimming",
+place: "America",
+salary: 20000000
+        },
+        {
+            id:2,
+            name: "Sachin tendulkar",
+work:"cricket",
+place: "india",
+salary: 30000000
+        },
+        {
+            id:3,
+            name: "Suniel chettri",
+work:"Football",
+place: "India",
+salary: 40000000
+        },
+        {
+            id:4,
+            name: "Tiger woods",
+work:"Golf",
+place: "America",
+salary: 60000000
+        },{
+            id:5,
+            name: "Ronaldo",
+work:"football",
+place: "portugal",
+salary: 100000000
+        },
+        {
+            id:5,
+            name: "Ronaldo",
+work:"football",
+place: "portugal",
+salary: 100000000
+        },
+        {
+            id:5,
+            name: "Ronaldo",
+work:"football",
+place: "portugal",
+salary: 100000000
+        }]
+     
+     let container1 = document.getElementById("container1");
+    
+
+        data.forEach((element,index)=>{
+      const  players = document.createElement("div");
+      players.classList.add('box')
+      players.innerHTML = `<h3>Name: ${element.name}</h3>
+                              <h3>Work: ${element.work}</h3>
+                              <h3>Place: ${element.place}</h3>
+                              <h3>Salary: ${element.salary}</h3>
+                              <button 
+                               class="btn"
+                              > Delete</button>
+                              `;
+         
+                              container1.appendChild(players)
+        })
+        let check = document.querySelectorAll(".btn");
+        check.forEach((del)=>{
+            del.addEventListener('click', (e)=>{
+                e.target.closest(".box").remove();
+            })
+        })
+    </script>
+</body>
+</html>
