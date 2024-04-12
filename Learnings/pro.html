@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmallProjects</title>
+    <style>
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    gap: 100px;
+
+}
+        
+        #btn{
+color: whitesmoke;
+background-color: red;
+width: 100px;
+height: 40px;
+font-size: larger;
+font-weight: 700;
+border-radius: 5px;
+        }
+
+        #script{
+color: whitesmoke;
+background-color:black;
+width: 100px;
+height: 40px;
+font-size: larger;
+font-weight: 700;
+border-radius: 5px;
+        }
+
+
+        .enclose{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            border-radius: 5px;
+            width: 30%;
+            height: 120px;
+            background-color: yellow;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        }
+        
+        /* slideshow */
+        .slideshow{
+            position: relative;
+            width: 100%;
+          height: 400px;
+          background-color: aqua;
+        }
+        .slideshow img{
+            
+            width: 100%;
+          height:100%;
+            object-fit:cover;
+            overflow: hidden;
+        }
+        /* for left */
+        .left{
+            position: absolute;
+            top: 40%;
+            left: 0;
+          width: 50px;
+          height: 80px;
+          border-radius: 3px;
+          background-color: whitesmoke;
+          
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .left i{
+          
+            font-size: 40px;
+            font-weight: 700;
+            color: black;
+        }
+
+        /* for right */
+        .right{
+            position: absolute;
+            top: 40%;
+            right: 0;
+          width: 50px;
+          height: 80px;
+          border-radius: 3px;
+          background-color: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .right i{
+          
+            font-size: 40px;
+            font-weight: 700;
+            color: black;
+        }
+
+        .font-size{
+            background-color: pink;
+            height: auto;
+            display: flex;
+           gap: 60px;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .font-size button{
+            color: whitesmoke;
+background-color: red;
+width: 100px;
+height: 40px;
+font-size: larger;
+font-weight: 700;
+border-radius: 5px;
+        }
+
+        .toggle{
+           position: relative;
+            width: 100%;
+            height: 60vh;
+            background: blue;
+        }
+        .red{
+            background-color: red;
+        }
+        
+        .toggle button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            color: whitesmoke;
+background-color: purple;
+width: 100px;
+height: 40px;
+font-size: larger;
+font-weight: 700;
+border-radius: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+     <div class="container">
+        <div class="enclose">
+            <button id="btn">CLICK</button>
+            <button id="script">Script</button>
+        </div>
+        
+        <div class="slideshow">
+            <img  id="imageSrc"  src="img3.jpg
+            " alt="">
+            <div class="left">
+                <i onclick="previous()" class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div class="right">
+                <i onclick="next()" class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+
+        <div class="font-size">
+ <h1 id="incre"> This is smaller font size</h1>
+ <button onclick="increase()">font</button>
+        </div>
+
+        <div class="toggle">
+    <button id="btn1" onclick="alter()">Toggle</button>
+        </div>
+    </div>
+
+    <script>
+        // for btn clicked
+        let btn = document.getElementById('btn');
+        btn.addEventListener('click',()=>{
+           btn.innerHTML = "CLICKED" 
+        })
+// for script
+        let script = document.getElementById('script');
+        script.addEventListener('mouseover',()=>{
+           alert("Thanos was coming....")
+        })
+
+        // previous and next
+        let i =0;
+        let imageSrc = document.getElementById("imageSrc")
+        let images = ['img1.jpg', 'img2.jpg', 'img3.jpg'];
+// for next
+       let next = ()=>{
+if(i == images.length-1){
+    i = 0;
+}
+else{
+    i++;
+}
+imageSrc.src = images[i];
+       }
+// previous
+       let previous = ()=>{
+if(i == 0 ){
+    i = images.length-1;
+}
+else{
+    i--;
+}
+imageSrc.src = images[i];
+       }
+
+    //    automatically change
+    function change(){
+       
+        if(i == images.length){
+            i = 0;
+        }
+        imageSrc.src = images[i]
+        i++;
+    }
+    setInterval(()=>{
+        change()
+    },4000)
+
+    // increase font
+let incre = document.getElementById('incre')
+    let increase = ()=>{
+console.log("incre click")
+incre.style.fontSize = "70px"
+    }
+    
+    // toggle color div
+    let alter = ()=>{
+ document.getElementsByClassName('toggle')[0].classList.toggle('red');
+    }
+    
+    </script>
+</body>
+</html>
