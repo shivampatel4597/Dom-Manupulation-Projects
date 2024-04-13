@@ -5,17 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container1{
-            display: flex;
+
+body{
+    display: flex;
+    flex-direction: column;
          
-            align-items: start;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
-            padding: 10px 20px;
+}
+#myInput {
+    
+  background-color: black;
+  color: whitesmoke;
+  background-position: 10px 12px;
+  width: 50%;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 40px;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  margin-bottom: 40px;
+}
+
+#myInput::placeholder {
+  color: white; /* Change placeholder text color */
+}
+
+
+        .container1{
+            width: 100%;
+            display: grid;
+            background-color: red;
+         border-radius: 7px;
+            align-items: center;
+            justify-items: center;
+            grid-template-rows: 370px 370px;
+            grid-template-columns: repeat(3, 2fr); /* 3 columns with equal width */
+            grid-gap: 20px;
+            padding: 20px 0;
         }
         .box{
-            width: 25%;
-        height: 350px;
+            width: 80%;
+        height: auto;
            background-color: palegreen; 
            border-radius: 5px;
            padding: 8px 5px;
@@ -43,7 +74,10 @@
     </style>
 </head>
 <body>
+   
+    <input type="text" id="myInput" onkeydown="myFunction()" placeholder="Search for players.." title="Type in a name">
     <div class="container1" id="container1">
+        
         
     </div>
 
@@ -120,6 +154,22 @@ salary: 100000000
                 e.target.closest(".box").remove();
             })
         })
+
+        // searching
+
+        
+        function myFunction(){
+            const searchValue = document.getElementById("myInput").value.toLowerCase();
+            const playerBoxes = document.querySelectorAll('.box');
+            playerBoxes.forEach((box) =>{
+             
+                let boxText  =    box.innerText.toLowerCase();
+               let matched = boxText.includes(searchValue);
+                box.style.display = (matched) ? "block" : "none";
+            })
+      
+      
+        }
     </script>
 </body>
 </html>
